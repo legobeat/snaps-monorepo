@@ -16256,7 +16256,7 @@ __metadata:
 
 "lavamoat-browserify@patch:lavamoat-browserify@npm%3A15.9.1#./.yarn/patches/lavamoat-browserify-npm-15.9.1-12130e68ce.patch::locator=root%40workspace%3A.":
   version: 15.9.1
-  resolution: "lavamoat-browserify@patch:lavamoat-browserify@npm%3A15.9.1#./.yarn/patches/lavamoat-browserify-npm-15.9.1-12130e68ce.patch::version=15.9.1&hash=7f54e4&locator=root%40workspace%3A."
+  resolution: "lavamoat-browserify@patch:lavamoat-browserify@npm%3A15.9.1#./.yarn/patches/lavamoat-browserify-npm-15.9.1-12130e68ce.patch::version=15.9.1&hash=066d19&locator=root%40workspace%3A."
   dependencies:
     "@lavamoat/aa": ^3.1.5
     "@lavamoat/lavapack": ^5.4.1
@@ -16270,7 +16270,7 @@ __metadata:
     readable-stream: ^3.6.0
     source-map: ^0.7.4
     through2: ^3.0.0
-  checksum: 7d5e312cc49ce1ceab42b862ebe8f8cc017218b0939c17fd42cf22828ea624b930383324b615267706f435f40b6985e55bdc0e55effff24ad7854e6b6cefa3f1
+  checksum: 1d69706389c1d2354344462b9c9d6263f6ba592a105b3ea15dbe261ae687e9896f589568ab531ef15f6a4a76e0f21f19432bd67454b4a1d8acf3f00480e8a563
   languageName: node
   linkType: hard
 
