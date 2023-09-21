@@ -4,7 +4,7 @@ A CLI for developing MetaMask Snaps.
 
 ## Installation
 
-Use Node.js `16.0.0` or later.
+Use Node.js `18.0.0` or later.
 We recommend [nvm](https://github.com/nvm-sh/nvm) for managing Node.js versions.
 
 Install a dev dependency in your snap project using `yarn` or `npm`:
