@@ -1026,14 +1026,6 @@
         "@metamask/object-multiplex>once>wrappy": true
       }
     },
-    "@metamask/providers>@metamask/object-multiplex>end-of-stream": {
-      "globals": {
-        "process.nextTick": true
-      },
-      "packages": {
-        "@metamask/object-multiplex>once": true
-      }
-    },
     "@wdio/mocha-framework>mocha>supports-color": {
       "builtin": {
         "os.release": true,
@@ -2033,9 +2025,17 @@
       },
       "packages": {
         "@lavamoat/lavapack>readable-stream": true,
-        "@metamask/providers>@metamask/object-multiplex>end-of-stream": true,
         "browserify>inherits": true,
+        "lavamoat-browserify>duplexify>end-of-stream": true,
         "lavamoat-browserify>duplexify>stream-shift": true
+      }
+    },
+    "lavamoat-browserify>duplexify>end-of-stream": {
+      "globals": {
+        "process.nextTick": true
+      },
+      "packages": {
+        "@metamask/object-multiplex>once": true
       }
     },
     "lavamoat-browserify>through2": {
