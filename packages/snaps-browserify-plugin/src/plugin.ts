@@ -10,7 +10,7 @@ import type { BrowserifyObject } from 'browserify';
 import { fromSource } from 'convert-source-map';
 import pathUtils from 'path';
 import type { TransformCallback } from 'stream';
-import { Transform } from 'stream';
+import { Transform } from 'readable-stream';
 
 type PluginOptions = {
   eval?: boolean;
