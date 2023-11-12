@@ -2,7 +2,7 @@
 import 'ses';
 import { SNAP_STREAM_NAMES, HandlerType } from '@metamask/snaps-utils';
 import type { Json, JsonRpcRequest, JsonRpcSuccess } from '@metamask/utils';
-import { EventEmitter } from 'readable-stream';
+import { EventEmitter } from 'events';
 import { parentPort } from 'worker_threads';
 
 import { ThreadSnapExecutor } from './ThreadSnapExecutor';

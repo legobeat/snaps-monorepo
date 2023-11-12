@@ -19,5 +19,5 @@ declare class FinalizationRegistry<Value> {
 }
 
 declare module 'readable-stream' {
-  export { Duplex, EventEmitter, pipeline } from 'stream';
+  export { Duplex, pipeline } from 'stream';
 }
