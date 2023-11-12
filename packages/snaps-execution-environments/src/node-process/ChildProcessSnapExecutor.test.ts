@@ -3,7 +3,7 @@ import 'ses';
 import { HandlerType, SNAP_STREAM_NAMES } from '@metamask/snaps-utils';
 import { MOCK_ORIGIN, MOCK_SNAP_ID } from '@metamask/snaps-utils/test-utils';
 import type { Json, JsonRpcRequest, JsonRpcSuccess } from '@metamask/utils';
-import { EventEmitter } from 'stream';
+import { EventEmitter } from 'readable-stream';
 
 import { ChildProcessSnapExecutor } from './ChildProcessSnapExecutor';
 

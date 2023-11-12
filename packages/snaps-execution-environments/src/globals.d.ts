@@ -17,3 +17,7 @@ declare class FinalizationRegistry<Value> {
 
   unregister(unregisterToken: unknown): void;
 }
+
+declare module 'readable-stream' {
+  export { Duplex, pipeline } from 'stream';
+}
