@@ -4839,17 +4839,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@metamask/object-multiplex@npm:^1.1.0, @metamask/object-multiplex@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "@metamask/object-multiplex@npm:1.2.0"
-  dependencies:
-    end-of-stream: ^1.4.4
-    once: ^1.4.0
-    readable-stream: ^2.3.3
-  checksum: 7c622639cc164c3b780294d790311e4bcb327faf14626717728022e95da5834f32fe4e242d8f4e7d9b8c2b83f0c76450922786b2f6ef50e777bfe119b78bdab7
-  languageName: node
-  linkType: hard
-
 "@metamask/object-multiplex@npm:^2.0.0":
   version: 2.0.0
   resolution: "@metamask/object-multiplex@npm:2.0.0"
@@ -4903,22 +4892,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/providers@npm:^13.0.0":
-  version: 13.0.0
-  resolution: "@metamask/providers@npm:13.0.0"
+"@metamask/providers@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "@metamask/providers@npm:14.0.0"
   dependencies:
     "@metamask/json-rpc-engine": ^7.1.1
-    "@metamask/object-multiplex": ^1.1.0
+    "@metamask/object-multiplex": ^2.0.0
     "@metamask/rpc-errors": ^6.0.0
     "@metamask/safe-event-emitter": ^3.0.0
     "@metamask/utils": ^8.1.0
     detect-browser: ^5.2.0
-    extension-port-stream: ^2.1.1
+    extension-port-stream: ^3.0.0
     fast-deep-equal: ^3.1.3
     is-stream: ^2.0.0
-    json-rpc-middleware-stream: ^4.2.1
+    json-rpc-middleware-stream: ^5.0.1
+    readable-stream: ^3.6.2
     webextension-polyfill: ^0.10.0
-  checksum: b41748cf179794bf7a68d3028e84234e876498611221ba40846ed0859b4470a806c4cf99ff9fcdc60fde1af2f0d999281e6edbdd42113223d8f7018a009ff0ab
+  checksum: 32c2695cf49ef6445c6e3bc8d6be30e64a16cf2b28d32369e315e841fbf29103dbb8e6da9d37b412ec119998feb1cce1fdc1f48ec46dfe96028018e69198c4e8
   languageName: node
   linkType: hard
 
@@ -5031,6 +5021,7 @@ __metadata:
     memfs: ^3.4.13
     prettier: ^2.7.1
     prettier-plugin-packagejson: ^2.2.11
+    readable-stream: ^3.6.2
     rimraf: ^4.1.2
     typescript: ~4.8.4
   languageName: unknown
@@ -5165,7 +5156,6 @@ __metadata:
     "@types/jest": ^27.5.1
     "@types/mocha": ^10.0.1
     "@types/node": 18.14.2
-    "@types/readable-stream": ^2.3.15
     "@types/tar-stream": ^3.1.1
     "@typescript-eslint/eslint-plugin": ^5.42.1
     "@typescript-eslint/parser": ^5.42.1
@@ -5202,6 +5192,7 @@ __metadata:
     nanoid: ^3.1.31
     prettier: ^2.7.1
     prettier-plugin-packagejson: ^2.2.11
+    readable-stream: ^3.6.2
     readable-web-to-node-stream: ^3.0.2
     rimraf: ^4.1.2
     tar-stream: ^3.1.6
@@ -5238,9 +5229,9 @@ __metadata:
     "@metamask/eslint-config-nodejs": ^12.1.0
     "@metamask/eslint-config-typescript": ^12.1.0
     "@metamask/json-rpc-engine": ^7.1.1
-    "@metamask/object-multiplex": ^1.2.0
+    "@metamask/object-multiplex": ^2.0.0
     "@metamask/post-message-stream": ^7.0.0
-    "@metamask/providers": ^13.0.0
+    "@metamask/providers": ^14.0.0
     "@metamask/rpc-errors": ^6.1.0
     "@metamask/snaps-sdk": "workspace:^"
     "@metamask/snaps-utils": "workspace:^"
@@ -5285,6 +5276,7 @@ __metadata:
     nanoid: ^3.1.31
     prettier: ^2.7.1
     prettier-plugin-packagejson: ^2.2.11
+    readable-stream: ^3.6.2
     rimraf: ^4.1.2
     serve-handler: ^6.1.5
     ses: ^0.18.8
@@ -5458,7 +5450,7 @@ __metadata:
     "@metamask/eslint-config-nodejs": ^12.1.0
     "@metamask/eslint-config-typescript": ^12.1.0
     "@metamask/key-tree": ^9.0.0
-    "@metamask/providers": ^13.0.0
+    "@metamask/providers": ^14.0.0
     "@metamask/rpc-errors": ^6.1.0
     "@metamask/utils": ^8.1.0
     "@swc/cli": ^0.1.62
@@ -5749,7 +5741,7 @@ __metadata:
     "@metamask/name-lookup-example-snap": "workspace:^"
     "@metamask/network-example-snap": "workspace:^"
     "@metamask/notification-example-snap": "workspace:^"
-    "@metamask/providers": ^13.0.0
+    "@metamask/providers": ^14.0.0
     "@metamask/snaps-utils": "workspace:^"
     "@metamask/utils": ^8.1.0
     "@metamask/wasm-example-snap": "workspace:^"
@@ -7397,16 +7389,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: a6a5e8cc78f486b9020d1ad009aa6c56943c68c7c6376e0f8399e9cbcd950b7b8f5d73f00200f5379f5e58d31d57d8aed24357f301d8e86108cd438ce6c8b3dd
-  languageName: node
-  linkType: hard
-
-"@types/readable-stream@npm:^2.3.15":
-  version: 2.3.15
-  resolution: "@types/readable-stream@npm:2.3.15"
-  dependencies:
-    "@types/node": "*"
-    safe-buffer: ~5.1.1
-  checksum: ec36f525cad09b6c65a1dafcb5ad99b9e2ed824ec49b7aa23180ac427e5d35b8a0706193ecd79ab4253a283ad485ba03d5917a98daaaa144f0ea34f4823e9d82
   languageName: node
   linkType: hard
 
@@ -11654,7 +11636,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"end-of-stream@npm:^1.0.0, end-of-stream@npm:^1.1.0, end-of-stream@npm:^1.4.1, end-of-stream@npm:^1.4.4":
+"end-of-stream@npm:^1.0.0, end-of-stream@npm:^1.1.0, end-of-stream@npm:^1.4.1":
   version: 1.4.4
   resolution: "end-of-stream@npm:1.4.4"
   dependencies:
@@ -12862,12 +12844,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"extension-port-stream@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "extension-port-stream@npm:2.1.1"
+"extension-port-stream@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "extension-port-stream@npm:3.0.0"
   dependencies:
+    readable-stream: ^3.6.2 || ^4.4.2
     webextension-polyfill: ">=0.10.0 <1.0"
-  checksum: aee8bbeb2ed6f69a62f58a89580e0e9002dadb11062edbaedb7bb04cfc5a5e0b0d3980bfeaa1c3ee7e08dec7e5fac26e25497fc2f82000db7653442bd5eca157
+  checksum: 4f51d2258a96154c2d916a8a5425636a2b0817763e9277f7dc378d08b6f050c90d185dbde4313d27cf66ad99d4b3116479f9f699c40358c64cccfa524d2b55bf
   languageName: node
   linkType: hard
 
@@ -15974,17 +15957,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json-rpc-middleware-stream@npm:^4.2.1":
-  version: 4.2.2
-  resolution: "json-rpc-middleware-stream@npm:4.2.2"
-  dependencies:
-    "@metamask/safe-event-emitter": ^3.0.0
-    readable-stream: ^2.3.3
-  checksum: 01ff3a23b501fde5c2abb8c3b4d100c4fd430b41cf5e7750235f860a02d5823f8a43b0e81150c1d3bb196737f2273af1c7a50ff179e95e3d59fb7fe172249de3
-  languageName: node
-  linkType: hard
-
-"json-rpc-middleware-stream@npm:^5.0.0":
+"json-rpc-middleware-stream@npm:^5.0.0, json-rpc-middleware-stream@npm:^5.0.1":
   version: 5.0.1
   resolution: "json-rpc-middleware-stream@npm:5.0.1"
   dependencies:
@@ -19537,7 +19510,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:2 || 3, readable-stream@npm:3, readable-stream@npm:3.6.2, readable-stream@npm:^3.0.2, readable-stream@npm:^3.0.6, readable-stream@npm:^3.1.1, readable-stream@npm:^3.4.0, readable-stream@npm:^3.5.0, readable-stream@npm:^3.6.0, readable-stream@npm:^3.6.2":
+"readable-stream@npm:2 || 3, readable-stream@npm:3, readable-stream@npm:3.6.2, readable-stream@npm:^3.0.2, readable-stream@npm:^3.0.6, readable-stream@npm:^3.1.1, readable-stream@npm:^3.4.0, readable-stream@npm:^3.5.0, readable-stream@npm:^3.6.0, readable-stream@npm:^3.6.2, readable-stream@npm:^3.6.2 || ^4.4.2":
   version: 3.6.2
   resolution: "readable-stream@npm:3.6.2"
   dependencies:
@@ -19548,7 +19521,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:^2.0.0, readable-stream@npm:^2.0.1, readable-stream@npm:^2.0.2, readable-stream@npm:^2.0.5, readable-stream@npm:^2.2.2, readable-stream@npm:^2.3.3, readable-stream@npm:~2.3.6":
+"readable-stream@npm:^2.0.0, readable-stream@npm:^2.0.1, readable-stream@npm:^2.0.2, readable-stream@npm:^2.0.5, readable-stream@npm:^2.2.2, readable-stream@npm:~2.3.6":
   version: 2.3.7
   resolution: "readable-stream@npm:2.3.7"
   dependencies:
