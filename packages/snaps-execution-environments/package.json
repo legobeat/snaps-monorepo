@@ -37,6 +37,7 @@
     "build:post-tsc": "yarn build:lavamoat",
     "build:lavamoat": "lavamoat scripts/build.js --policy lavamoat/build-system/policy.json  --policyOverride lavamoat/build-system/policy-override.json",
     "build:lavamoat:policy": "yarn build:lavamoat --writeAutoPolicy && node scripts/build.js --writeAutoPolicy",
+    "build:lavamoat:policy:debug": "yarn build:lavamoat --writeAutoPolicy --writeAutoPolicyDebug && node scripts/build.js --writeAutoPolicy --writeAutoPolicyDebug",
     "auto-changelog-init": "auto-changelog init",
     "publish:preview": "yarn npm publish --tag preview",
     "lint:ci": "yarn lint",

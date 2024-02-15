@@ -46,18 +46,26 @@ const OUTPUT_BUNDLE = 'bundle.js';
  */
 async function main() {
   const {
-    argv: { writeAutoPolicy },
+    argv: { writeAutoPolicy, writeAutoPolicyDebug },
   } = yargs(process.argv.slice(2)).usage(
     '$0 [options]',
     'Build snaps execution environments',
-    (yargsInstance) =>
+    (yargsInstance) => {
       yargsInstance.option('writeAutoPolicy', {
         alias: ['p'],
         default: false,
         demandOption: false,
         description: 'Whether to regenerate the LavaMoat policy or not',
         type: 'boolean',
-      }),
+      });
+      yargsInstance.option('writeAutoPolicyDebug', {
+        alias: ['d'],
+        default: false,
+        demandOption: false,
+        description: 'Whether to regenerate the LavaMoat debug policy or not',
+        type: 'boolean',
+      });
+    },
   );
 
   const lavamoatSecurityOptionsNode = {};
@@ -181,9 +189,14 @@ async function main() {
       // For browser builds, the prelude is skipped and inlined in a script tag before the main bundle instead
       bundler.plugin(LavaMoatBrowserify, {
         writeAutoPolicy,
+        writeAutoPolicyDebug,
         policy: path.resolve(
           __dirname,
           `../lavamoat/browserify/${key}/policy.json`,
+        ),
+        policyDebug: path.resolve(
+          __dirname,
+          `../lavamoat/browserify/${key}/policy-debug.json`,
         ),
         policyName: key,
         policyOverride: path.resolve(
