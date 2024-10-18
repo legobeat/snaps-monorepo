@@ -18,6 +18,7 @@ import {
   string,
   tuple,
   refine,
+  assign,
 } from '@metamask/superstruct';
 import {
   CaipAccountIdStruct,
@@ -46,6 +47,7 @@ import type {
   SnapsChildren,
   StringElement,
 } from './component';
+import type { AvatarElement } from './components';
 import {
   type AddressElement,
   type BoldElement,
@@ -194,6 +196,24 @@ function element<Name extends string, Props extends ObjectSchema = EmptyObject>(
 }
 
 /**
+ * A helper function for creating a struct for a JSX element with selective props.
+ *
+ * @param name - The name of the element.
+ * @param selector - The selector function choosing the struct to validate with.
+ * @returns The struct for the element.
+ */
+function elementWithSelectiveProps<
+  Name extends string,
+  Selector extends (value: any) => AnyStruct,
+>(name: Name, selector: Selector) {
+  return object({
+    type: literal(name) as unknown as Struct<Name, Name>,
+    props: selectiveUnion(selector),
+    key: nullable(KeyStruct),
+  });
+}
+
+/**
  * A struct for the {@link ImageElement} type.
  */
 export const ImageStruct: Describe<ImageElement> = element('Image', {
@@ -239,16 +259,68 @@ export const CheckboxStruct: Describe<CheckboxElement> = element('Checkbox', {
 });
 
 /**
- * A struct for the {@link InputElement} type.
+ * A struct for the generic input element props.
  */
-export const InputStruct: Describe<InputElement> = element('Input', {
+export const GenericInputPropsStruct = object({
   name: string(),
-  type: optional(
-    nullUnion([literal('text'), literal('password'), literal('number')]),
-  ),
   value: optional(string()),
   placeholder: optional(string()),
 });
+
+/**
+ * A struct for the text type input props.
+ */
+export const TextInputPropsStruct = assign(
+  GenericInputPropsStruct,
+  object({
+    type: literal('text'),
+  }),
+);
+
+/**
+ * A struct for the password type input props.
+ */
+export const PasswordInputPropsStruct = assign(
+  GenericInputPropsStruct,
+  object({
+    type: literal('password'),
+  }),
+);
+
+/**
+ * A struct for the number type input props.
+ */
+export const NumberInputPropsStruct = assign(
+  GenericInputPropsStruct,
+  object({
+    type: literal('number'),
+    min: optional(number()),
+    max: optional(number()),
+    step: optional(number()),
+  }),
+);
+
+/**
+ * A struct for the {@link InputElement} type.
+ */
+export const InputStruct: Describe<InputElement> = elementWithSelectiveProps(
+  'Input',
+  (value) => {
+    if (isPlainObject(value) && hasProperty(value, 'type')) {
+      switch (value.type) {
+        case 'text':
+          return TextInputPropsStruct;
+        case 'password':
+          return PasswordInputPropsStruct;
+        case 'number':
+          return NumberInputPropsStruct;
+        default:
+          return GenericInputPropsStruct;
+      }
+    }
+    return GenericInputPropsStruct;
+  },
+);
 
 /**
  * A struct for the {@link OptionElement} type.
@@ -471,7 +543,18 @@ export const FormattingStruct: Describe<StandardFormattingElement> = typedUnion(
  */
 export const AddressStruct: Describe<AddressElement> = element('Address', {
   address: nullUnion([HexChecksumAddressStruct, CaipAccountIdStruct]),
+  truncate: optional(boolean()),
+  displayName: optional(boolean()),
+  avatar: optional(boolean()),
 });
+
+/**
+ * A struct for the {@link AvatarElement} type.
+ */
+export const AvatarStruct = element('Avatar', {
+  address: CaipAccountIdStruct,
+  size: optional(nullUnion([literal('sm'), literal('md'), literal('lg')])),
+}) as unknown as Struct<AvatarElement, null>;
 
 export const BoxChildrenStruct = children(
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -538,28 +621,6 @@ export const SectionStruct: Describe<SectionElement> = element('Section', {
   ),
 });
 
-export const NotificationChildrenStruct = children(
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  [lazy(() => NotificationComponentsStruct)],
-) as unknown as Struct<SnapsChildren<GenericSnapElement>, null>;
-
-/**
- * A struct for the {@link BoxElement} type but with a limited subset of children.
- */
-export const NotificationStruct: Describe<BoxElement> = element('Box', {
-  children: NotificationChildrenStruct,
-  direction: optional(nullUnion([literal('horizontal'), literal('vertical')])),
-  alignment: optional(
-    nullUnion([
-      literal('start'),
-      literal('center'),
-      literal('end'),
-      literal('space-between'),
-      literal('space-around'),
-    ]),
-  ),
-});
-
 /**
  * A subset of JSX elements that are allowed as children of the Footer component.
  * This set should include a single button or a tuple of two buttons.
@@ -605,7 +666,7 @@ export const ValueStruct: Describe<ValueElement> = element('Value', {
  */
 export const HeadingStruct: Describe<HeadingElement> = element('Heading', {
   children: StringElementStruct,
-  size: optional(nullUnion([literal('md'), literal('lg')])),
+  size: optional(nullUnion([literal('sm'), literal('md'), literal('lg')])),
 });
 
 /**
@@ -745,21 +806,7 @@ export const BoxChildStruct = typedUnion([
   IconStruct,
   SelectorStruct,
   SectionStruct,
-]);
-
-export const NotificationComponentsStruct = typedUnion([
-  CopyableStruct,
-  NotificationStruct,
-  BoldStruct,
-  ItalicStruct,
-  AddressStruct,
-  DividerStruct,
-  RowStruct,
-  TextStruct,
-  TooltipStruct,
-  IconStruct,
-  ImageStruct,
-  LinkStruct,
+  AvatarStruct,
 ]);
 
 /**
@@ -824,6 +871,7 @@ export const JSXElementStruct: Describe<JSXElement> = typedUnion([
   SelectorStruct,
   SelectorOptionStruct,
   SectionStruct,
+  AvatarStruct,
 ]);
 
 /**
