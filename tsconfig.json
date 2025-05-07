@@ -18,6 +18,8 @@
     "noEmit": true,
     "resolveJsonModule": true
   },
-  "files": [],
-  "include": ["scripts"]
+  "files": [
+    "./readable-stream.d"
+  ],
+  "include": ["scripts", "types"]
 }
